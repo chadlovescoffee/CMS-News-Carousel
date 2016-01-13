@@ -1,0 +1,159 @@
+// Screen Queries
+@mixin screen($screen_width) {
+  @media (min-width: $screen_width ) and (min-height: 0px) {
+    @content;
+  }
+}
+
+
+// Scale Transform
+@mixin scale($unit) {
+  -webkit-transform: scale($unit);
+  -ms-transform: scale($unit);
+  transform: scale($unit);
+}
+
+
+// Rotate Transform
+@mixin rotate($degrees) {
+  -webkit-transform: rotate($degrees);
+  -ms-transform: rotate($degrees);
+  transform: rotate($degrees);
+}
+
+
+
+// Columns 
+@mixin column ($width) {
+  float: left;
+  width: $width;
+  position: relative;
+}
+
+// Column Wrapper
+.column_wrapper {
+  position: relative;
+  overflow: auto;
+}
+
+
+// Opacity
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie);
+}
+
+
+// Rounded corners
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+
+// Inset-border
+@mixin inset-border($horizontal, $vertical, $color) {
+  -webkit-box-shadow: inset $horizontal $vertical 0px 0px $color;
+  -moz-box-shadow: inset $horizontal $vertical 0px 0px $color;
+  box-shadow: inset $horizontal $vertical 0px 0px $color;
+}
+
+
+// Box Shadow
+@mixin box-shadow($top, $left, $blur, $color) {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+}
+
+
+// Background Image Cover
+@mixin background-cover ($url, $valign) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: $valign center;
+  background-size: cover;
+}
+
+
+// Vertical Align
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+// Horizontal Align
+@mixin horizontal-align {
+  display: block;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+
+// Horizontal Gradient
+@mixin horizontal-gradient($from, $to, $stop: 100%) {
+  background-color: $from;
+  background-image: -moz-linear-gradient(left, $from 0%, $to $stop);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, $from), color-stop($stop, $to));
+  background-image: -webkit-linear-gradient(left, $from 0%, $to $stop);
+  background-image: -o-linear-gradient(left, $from 0%, $to $stop);
+  background: -ms-linear-gradient(left, $from 0%, $to $stop);
+  background: linear-gradient(to right, $from 0%, $to $stop);
+}
+
+// Vertical Gradient
+@mixin vertical-gradient($from, $to, $stop: 100%) {
+  background: -moz-linear-gradient(270deg, $from 0%, $to $stop);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $from), color-stop($stop, $to));
+  background: -webkit-linear-gradient(270deg, $from 0%, $to $stop);
+  background: -o-linear-gradient(270deg, $from 0%, $to $stop);
+  background: -ms-linear-gradient(270deg, $from 0%, $to $stop);
+  background: linear-gradient(180deg, $from 0%, $to $stop);
+}
+
+
+// Maintain Aspect Ratio
+@mixin ratio($width, $height) {
+  position: relative;
+  &:before{
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+// Browser Reset
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: inherit;
+  border: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+}

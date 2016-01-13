@@ -1,0 +1,7 @@
+{
+  "name" : "cms_news_carousel",
+  "version": "1.0",
+  "main": "cms_news_carousel.js",
+  "style" : "*.scss",
+  "transforms" : [ "sass-css-stream" ]
+}

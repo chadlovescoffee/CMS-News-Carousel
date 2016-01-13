@@ -1,0 +1,136 @@
+@import 'mixins.scss';
+
+$photo_size: 22rem;
+
+.carousel_height {
+  height: calc(22rem + 14em);
+  @include screen(768px){
+    height: calc(10rem + 14em);
+  }
+  @include screen(1024px){
+    height: calc(8rem + 14em);
+  }
+  @include screen(1400px){
+    height: calc(6rem + 14em);
+  }
+}
+
+.cms_news_carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  @extend .carousel_height;
+
+
+  .outer_wrapper {
+    width: 100%;
+    position: absolute;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 110%;
+
+    .inner_wrapper {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+
+      .news {
+        display: inline-block;
+        width: 22rem;
+        overflow: hidden;
+        padding-left: .5em;
+        padding-right: .5em;
+        margin-bottom: 4rem;
+
+
+        @include screen(768px){
+          width: 10rem;
+        }
+        @include screen(1024px){
+          width: 8rem;
+        }
+        @include screen(1400px){
+          width: 6rem;
+        }
+
+        .photo {
+          @include ratio(100%, 100%);
+          background-size: cover;
+        }
+
+        .wrapper {
+          background-color: rgba(255, 255, 255, 0.1);
+          padding-left: 1em;
+          padding-right: 1em;
+          padding-top: 1em;
+          height: 11em;
+          overflow: hidden;
+          position: relative;
+
+
+          .story {
+            display: none;
+          }
+
+
+
+        }
+
+      }
+    }
+  }
+
+  .arrow_wrapper {
+    width: 100%;
+    position: absolute;
+    bottom: 2.8em;
+
+    .arrow {
+      position: absolute;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+
+
+      &:before {
+        border-style: solid;
+        border-width: 0.25em 0.25em 0 0;
+        content: '';
+        display: inline-block;
+        left: 0.15em;
+        position: relative;
+        top: 0.15em;
+        transform: rotate(-45deg);
+        vertical-align: top;
+        width: 2em;
+        height: 2em;
+      }
+
+      &.right {
+        right: 1.2em;
+
+        &:before {
+          transform: rotate(45deg);
+        }
+      }
+
+      &.left {
+        left: 1.2em;
+
+        &:before {
+          transform: rotate(-135deg);
+        }
+      }
+
+    }
+
+  }
+}
+
+.cms_news_carousel_more_button {
+  display: none;
+}
+
+
+
+
